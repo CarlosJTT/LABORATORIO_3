@@ -5,19 +5,29 @@
 #include<iostream>
 #include<conio.h>
 
+
 using namespace std;
 
 int main(){
-	int numerosC [100][100],numerosB [100][100],numerosA [100][100],identidad[100][100],filasA,columnasA,filasB,columnasB,columnasC,filasC,op,C,k,det,l,aux,pivote;
-	
+	int numerosC [100][100],numerosB [100][100],numerosA [100][100],identidad[100][100],filasA,l,columnasA,filasB,columnasB,columnasC,filasC,op,C,C1,C2,k,det=1,pivote1,aux,pivote;
+
 	cout<<"                   UNIV.  TARQUI TICONA CARLOS JAVIER            "<<endl;
 	cout<<"-------------------------------------------------------------------"<<endl;
-	cout<<" EL PRESENTE PROGRAMA, DARA SOLUCION A LAS "<<endl;
+	cout<<" EL PRESENTE PROGRAMA, DARA SOLUCION A TUS POSIBLES INCOGNITAS QUE TENGAS.. "<<endl;
+	cout<<" POR FAVOR, TOMAR ENCUENTA DE COMO SE PEDIRA LOS VALORES (LLENADO DE MATRIZ):"<<endl;
+	cout<<"          [0][0]    [0][1]     [0][2]   ---    [0][j]     "<<endl;
+	cout<<"          [1][0]    [1][1]     [1][2]   ---    [1][j]     "<<endl;
+	cout<<"          [2][0]    [2][1]     [2][2]   ---    [2][j]     "<<endl;
+	cout<<"          [3][0]    [3][1]     [3][2]   ---    [3][j]     "<<endl;
+	cout<<"            :          :          :               :           "<<endl;
+	cout<<"          [i][0]    [i][1]     [i][2]   ---    [i][j]     "<<endl;
+	cout<<"----------------------------------------------------------------------------"<<endl;
 	cout<<" DIGITE EL NUMERO DE FILAS DE LA MATRIZ A: ";
 	cin>>filasA;
 	cout<<" DIGITE EL NUMERO DE COLUMNAS DE LA MATRIZ A: ";
 	cin>>columnasA;
-	
+    cout<<" INGRESE UN ESCALAR QUE QUIERE QUE MULTIPLIQUE A LA MATRIZ A (PARA LA OPCION 13)"<<endl;
+    cin>>C1;	
 	// almacenamiento elementos en la matriz A
 	for(int i=0;i<filasA;i++){
 		for(int j=0;j<columnasA;j++){
@@ -35,11 +45,12 @@ int main(){
 		cout<<"\n";
    }
 
-
 	cout<<" DIGITE EL NUMERO DE FILAS DE LA MATRIZ B: ";
 	cin>>filasB;
 	cout<<" DIGITE EL NUMERO DE COLUMNAS DE LA MATRIZ B: ";
 	cin>>columnasB;	
+    cout<<" INGRESE UN ESCALAR QUE QUIERE QUE MULTIPLIQUE A LA MATRIZ B (PARA LA OPCION 14)"<<endl;
+    cin>>C2;
 	// almacenamiento elementos en la matriz B
 	for(int i=0;i<filasB;i++){
 		for(int j=0;j<columnasB;j++){
@@ -58,22 +69,22 @@ int main(){
 	}
 	
     	cout<<" QUE OPERACION DESEA REALIZAR? (COLOQUE EL NUMERO DE LA OPCION Y LUEGO ENTER)"<<endl;
-		cout<<"1)  A+B "<<endl;
-		cout<<"2)  A-B "<<endl;
-		cout<<"3)  A*B "<<endl;
-		cout<<"4)  A/B "<<endl;
-		cout<<"5) DETERMINANTE DE A "<<endl;
-		cout<<"6) DETERMINANTE DE B "<<endl;
-		cout<<"7) MATRIZ INVERSA DE A "<<endl;
-		cout<<"8) MATRIZ INVERSA DE B "<<endl;
-		cout<<"9) MATRIZ TRANSPUESTA DE A "<<endl;
-		cout<<"10) MATRIZ TRANSPUESTA DE B"<<endl;
+		cout<<"1)  A+B "<<endl; // YA ESTA
+		cout<<"2)  A-B "<<endl; // YA ESTA
+		cout<<"3)  A*B "<<endl; // YA ESTA
+		cout<<"4)  A/B "<<endl; // YA ESTA
+		cout<<"5) DETERMINANTE DE A "<<endl;  // YA ESTA
+		cout<<"6) DETERMINANTE DE B "<<endl;  // YA ESTA
+		cout<<"7) MATRIZ INVERSA DE A "<<endl; // FALTA
+		cout<<"8) MATRIZ INVERSA DE B "<<endl; // FALTA
+		cout<<"9) MATRIZ TRANSPUESTA DE A "<<endl; // YA ESTA
+		cout<<"10) MATRIZ TRANSPUESTA DE B"<<endl; // YA ESTA
 		cout<<"11) RANGO DE A "<<endl;
 		cout<<"12) RANGO DE B "<<endl;
-		cout<<"13) MULTIPLICAR POR UN ESCALAR LA MATRIZ A "<<endl;
-		cout<<"14) MULTIPLICAR POR UN ESCALAR LA MATRIZ B"<<endl;
-		cout<<"15) MATRIZ TRIANGULAR DE LA MATRIZ A "<<endl;
-		cout<<"16) MATRIZ TRIANGULAR DE LA MATRIZ B "<<endl;
+		cout<<"13) MULTIPLICAR POR UN ESCALAR LA MATRIZ A "<<endl; //ya esta
+		cout<<"14) MULTIPLICAR POR UN ESCALAR LA MATRIZ B"<<endl; // ya esta
+		cout<<"15) MATRIZ TRIANGULAR DE LA MATRIZ A "<<endl; //medio que ya esta
+		cout<<"16) MATRIZ TRIANGULAR DE LA MATRIZ B "<<endl; // medio que ya esta
 		cout<<"17) MATRIZ DIAGONAL DE A "<<endl;
 		cout<<"18) MATRIZ DIAGONAL DE B "<<endl;
 		cout<<"19) MATRIZ ELEVADA DE A "<<endl;
@@ -84,7 +95,7 @@ int main(){
 		cout<<"24) FACTORIZACION DE CHOLÑSKY MATRIZ B "<<endl;
 		cout<<"25) CALCULO DE VALORES PROPIOS DE LA MATRIZ A "<<endl;
 		cout<<"26) CALCULO DE VALORES PROPIOS DE LA MATRIZ B "<<endl;
-		cout<<"27) VESCTORES PROPIOS DE LA MATRIZ A"<<endl;
+		cout<<"27) VECTORES PROPIOS DE LA MATRIZ A"<<endl;
 		cout<<"28) VECTORES PROPIOS DE LA MATRZI B"<<endl;
 		cin>>op;
 		
@@ -148,17 +159,22 @@ int main(){
 		   {
 		   	if(columnasA == filasA)
 		   	{
-		   		cout<<"LA DETERMINANTE DE A ES: "<<endl;
-				det=numerosA[0][0];
-                for(int k=0; k< filasA; k++){
-                	l=k;
-                	for(int i=l; i< filasA; i++){
-                		for(int j=l; j<filasA; j++){
-						numerosA[i] [j] = ((numerosA[k] [k]*numerosA[i] [j])-(numerosA[k] [j]*numerosA[i] [k]))/numerosA[k] [k];}
-						cout<<det*numerosA[k+2] [k+2], "  ";
-					}
-		    	}
-		    	cout<<endl;
+                for(int i=0; i< filasA; i++)
+				{
+                	pivote=numerosA[i] [i];
+                	for(int j=i+1; j< filasA; j++)
+					{
+						pivote1= numerosA[j] [i];
+						aux=pivote1/pivote;
+                		for(int k=0; k<filasA; k++)
+						numerosA[j] [k] = (numerosA[j] [k])-(aux*numerosA[i] [k]);
+				   	}
+		       	}
+		    	
+		    	//calculo de la determinante
+		    	for(int i=0; i< filasA; i++)
+		    	    det *= numerosA[i] [i];
+               cout<<"    LA DETERMINANTE DE A ES: "<<det<<endl;
 			}
 			else
 			cout<<"LA MATRIZ NO ES CUADRADA"<<endl;
@@ -168,17 +184,55 @@ int main(){
 		   {
 		   	if(columnasB== filasB)
 		   	{
-		   		cout<<"LA DETERMINANTE DE B ES: "<<endl;
-				det=numerosB[0][0];
-                for(int k=0; k< filasB; k++){
-                	l=k;
-                	for(int i=l; i< filasB; i++){
-                		for(int j=l; j<filasB; j++){
-						numerosB[i] [j] = ((numerosB[k] [k]*numerosB[i] [j])-(numerosB[k] [j]*numerosB[i] [k]))/numerosB[k] [k];}
-						cout<<det*numerosB[k+2] [k+2], "  ";
+		   		// REDUCCION POR REGLONES
+                for(int i=0; i< filasB; i++)
+				{
+                	pivote=numerosB[i] [i];
+                	for(int j=i+1; j< filasB; j++)
+					{
+						pivote1= numerosB[j] [i];
+						aux=pivote1/pivote;
+                		for(int k=0; k<filasB; k++)
+						numerosB[j] [k] = (numerosB[j] [k])-(aux*numerosB[i] [k]);
+				   	}
+		       	}
+		    	
+		    	//calculo de la determinante
+		    	for(int i=0; i< filasB; i++)
+		    	    det *=numerosB[i] [i];
+               cout<<"    LA DETERMINANTE DE B ES: "<<det<<endl;
+			}
+			else
+			cout<<"LA MATRIZ NO ES CUADRADA"<<endl;
+		   } 
+		else
+		   if(op==9)
+		   {
+		   	if(columnasA== filasA)
+		   	{
+		   		cout<<"LA MATRIZ TRANSPUESTA DE  A ES: "<<endl;
+                for(int i=0; i< filasA; i++){
+                	for(int j=0; j< columnasA; j++){
+					cout<<numerosA[j] [i]<<"  ";
 					}
+				cout<<endl;
 		    	}
-		    	cout<<endl;
+			}
+			else
+			cout<<"LA MATRIZ NO ES CUADRADA"<<endl;
+		   } 
+		else
+		   if(op==10)
+		   {
+		   	if(columnasB== filasB)
+		   	{
+		   		cout<<"LA MATRIZ TRANSPUESTA DE B ES: "<<endl;
+                for(int i=0; i< filasB; i++){
+                	for(int j=0; j< columnasB; j++){
+						cout<<numerosB[j] [i]<<"  ";
+					}
+				cout<<endl;
+		    	}
 			}
 			else
 			cout<<"LA MATRIZ NO ES CUADRADA"<<endl;
@@ -190,17 +244,20 @@ int main(){
 		   	{
 		   		for(int i=0; i<filasA; i++){
 		   			pivote=numerosA[i] [i];
-		   			for(k=0; k<0; k++){
+		   			//convertir el pivote a 1 y aplicar la operacion sobre toda la fila
+		   			for(k=0; k<filasA; k++){
+		   				
 		   				numerosA[i] [k]=(numerosA[i] [k])/pivote;
 		   				identidad[i] [k]=(identidad[i] [k])/pivote;
 					   }
-					for(int j=0;j<filasA; j++){
+					for(int j=0; j<filasA; j++){
 						if(i!=j) //no estoy en la diagonal
 						 {
 						 	aux=numerosA[j] [i];
-						 	for(int k=0;k<filasA; k++){
-						 		numerosA[j] [k] = numerosA[j] [k]-aux*numerosA[i] [k];
-						 		cout<< identidad[j] [k]-aux*identidad[i] [k]<<"  ";
+						 	for(int k=0; k<filasA; k++){
+						 		numerosA[j] [k] = (numerosA[j] [k])-(aux*numerosA[i] [k]);
+						 		identidad[j] [k] = (identidad[j] [k])-(aux*identidad[i] [k]);
+						 		cout<<identidad[i] [j]<<"  ";
 							 }
 						 }
 					}
@@ -238,7 +295,70 @@ int main(){
 			cout<<"LA MATRIZ NO ES CUADRADA"<<endl;
 		   }
 		else
-		   if(op==9)
+		   if(op==13)
+		   {
+                for(int i=0; i<filasA; i++){
+                	for(int j=0; j<columnasA; j++){
+                		numerosA[i] [j] *=C1;
+                		cout<<numerosA[i] [j]<<"  ";
+					}
+				cout<<endl;
+				}
+		   }
+		else
+		   if(op==14)
+		   {
+                for(int i=0; i<filasB; i++){
+                	for(int j=0; j<columnasB; j++){
+                		numerosB[i] [j] *=C2;
+                		cout<<numerosB[i] [j]<<"  ";
+					}
+				cout<<endl;
+				}		   	
+		   }
+		else
+		   if(op==15)
+		   {
+                for(int i=0; i< filasA; i++)
+				{
+                	pivote=numerosA[i] [i];
+                	for(int j=i+1; j< columnasA; j++)
+					{
+						pivote1= numerosA[j] [i];
+						aux=pivote1/pivote;
+                		for(int k=0; k<filasA; k++)
+						numerosA[j] [k] = (numerosA[j] [k])-(aux*numerosA[i] [k]);
+				   	}
+		       	}
+			for(int i=0; i<filasA; i++){
+        		for(int j=0; j<columnasA; j++){
+				cout<<numerosA[i] [j]<<"  ";
+				}
+			cout<<endl;	 
+			}	
+		   }
+		else
+		   if(op==16)
+		   {
+                for(int i=0; i< filasB; i++)
+				{
+                	pivote=numerosB[i] [i];
+                	for(int j=i+1; j< columnasB; j++)
+					{
+						pivote1= numerosB[j] [i];
+						aux=pivote1/pivote;
+                		for(int k=0; k<filasB; k++)
+						numerosB[j] [k] = (numerosB[j] [k])-(aux*numerosB[i] [k]);
+				   	}
+		       	}
+			for(int i=0; i<filasB; i++){
+		     	for(int j=0; j<columnasB; j++){
+				cout<<numerosB[i] [j]<<"  "; 
+				}
+			cout<<endl;	 
+			}			  	
+		   }
+		else
 		   
 	getch();
 	return 0;	
